@@ -28,6 +28,7 @@ import {
 import * as error from 'lib0/error'
 import * as binary from 'lib0/binary'
 import * as array from 'lib0/array'
+import * as fs from 'fs'
 
 /**
  * @todo This should return several items
@@ -254,7 +255,7 @@ export class Item extends AbstractStruct {
    * @param {string | null} parentSub
    * @param {AbstractContent} content
    */
-  constructor (id, left, origin, right, rightOrigin, parent, parentSub, content) {
+  constructor(id, left, origin, right, rightOrigin, parent, parentSub, content) {
     super(id, content.getLength())
     /**
      * The item that was originally to the left of this item.
@@ -313,30 +314,30 @@ export class Item extends AbstractStruct {
    *
    * @type {boolean}
    */
-  set marker (isMarked) {
+  set marker(isMarked) {
     if (((this.info & binary.BIT4) > 0) !== isMarked) {
       this.info ^= binary.BIT4
     }
   }
 
-  get marker () {
+  get marker() {
     return (this.info & binary.BIT4) > 0
   }
 
   /**
    * If true, do not garbage collect this Item.
    */
-  get keep () {
+  get keep() {
     return (this.info & binary.BIT1) > 0
   }
 
-  set keep (doKeep) {
+  set keep(doKeep) {
     if (this.keep !== doKeep) {
       this.info ^= binary.BIT1
     }
   }
 
-  get countable () {
+  get countable() {
     return (this.info & binary.BIT2) > 0
   }
 
@@ -344,17 +345,17 @@ export class Item extends AbstractStruct {
    * Whether this item was deleted or not.
    * @type {Boolean}
    */
-  get deleted () {
+  get deleted() {
     return (this.info & binary.BIT3) > 0
   }
 
-  set deleted (doDelete) {
+  set deleted(doDelete) {
     if (this.deleted !== doDelete) {
       this.info ^= binary.BIT3
     }
   }
 
-  markDeleted () {
+  markDeleted() {
     this.info |= binary.BIT3
   }
 
@@ -365,7 +366,7 @@ export class Item extends AbstractStruct {
    * @param {StructStore} store
    * @return {null | number}
    */
-  getMissing (transaction, store) {
+  getMissing(transaction, store) {
     if (this.origin && this.origin.client !== this.id.client && this.origin.clock >= getState(store, this.origin.client)) {
       return this.origin.client
     }
@@ -410,10 +411,53 @@ export class Item extends AbstractStruct {
   }
 
   /**
+   * @param {Item|null} startBlock
+   * @param {number} clientId
+   */
+  // Helper function to generate ASCII representation of the block store for each client
+  writeBlockChainToFile(startBlock, clientId, filename = "block_chain_dump.txt") {
+    let asciiRepresentation = `Client ID: ${clientId}\n`;
+    asciiRepresentation += `Block Chain:\n`;
+
+    let currentBlock = startBlock;
+
+    // Follow the chain of blocks starting from the leftmost block
+    while (currentBlock !== null) {
+      const leftId = currentBlock.left ? currentBlock.left.content.getContent() : 'null';
+      const rightId = currentBlock.right ? currentBlock.right.content.getContent() : 'null';
+      const blockId = `${currentBlock.id.client}:${currentBlock.id.clock}`;
+
+      // Append each block's information to the ASCII string
+      asciiRepresentation += `Block ID: ${blockId} | Left: ${leftId} | Right: ${rightId}\n`;
+
+      // Move to the next block (follow the right pointer)
+      currentBlock = currentBlock.right;
+    }
+
+    // Write the representation to the file (append mode)
+    fs.appendFileSync(filename, asciiRepresentation + "\n\n===========================\n\n", 'utf8');
+  }
+
+  /**
+   * @param {Item} ref
+   */
+  printBlockToIntegrate = (ref) => {
+    console.log("block to integrate:")
+    console.log(`  id: ${ref.id.client}:${ref.id.clock}`);
+    console.log(`  origin: ${ref.origin}`);
+    console.log(`  left: ${ref.left}`);
+    console.log(`  right: ${ref.right}`);
+    console.log(`  rightOrigin: ${ref.rightOrigin}`);
+    console.log(`  content: ${ref.content.getContent()}`);
+  }
+
+  // YATA PAPER MAIN ALG HERE
+  // block-level integration
+  /**
    * @param {Transaction} transaction
    * @param {number} offset
    */
-  integrate (transaction, offset) {
+  integrate(transaction, offset) {
     if (offset > 0) {
       this.id.clock += offset
       this.left = getItemCleanEnd(transaction, transaction.doc.store, createID(this.id.client, this.id.clock - 1))
@@ -421,9 +465,14 @@ export class Item extends AbstractStruct {
       this.content = this.content.splice(offset)
       this.length -= offset
     }
+    console.log("Integrating block with ID:", this.id);
+    this.writeBlockChainToFile(this, this.id.client, 'block_store_dump.txt'); // Dump block store state
+
 
     if (this.parent) {
+      // detect conflict
       if ((!this.left && (!this.right || this.right.left !== null)) || (this.left && this.left.right !== this.right)) {
+        console.log("conflict found", "cnd 1", !this.left && (!this.right || this.right.left !== null), "cnd 2", this.left && this.left.right !== this.right)
         /**
          * @type {Item|null}
          */
@@ -444,6 +493,11 @@ export class Item extends AbstractStruct {
         } else {
           o = /** @type {AbstractType<any>} */ (this.parent)._start
         }
+
+
+
+
+
         // TODO: use something like DeleteSet here (a tree implementation would be best)
         // @todo use global set definitions
         /**
@@ -483,6 +537,10 @@ export class Item extends AbstractStruct {
         }
         this.left = left
       }
+
+
+
+      this.writeBlockChainToFile(this, this.id.client, 'block_store_dump.txt'); // Dump block store state after conflict resolution
       // reconnect left/right + update parent map/start if necessary
       if (this.left !== null) {
         const right = this.left.right
@@ -497,7 +555,7 @@ export class Item extends AbstractStruct {
           }
         } else {
           r = /** @type {AbstractType<any>} */ (this.parent)._start
-          ;/** @type {AbstractType<any>} */ (this.parent)._start = this
+            ;/** @type {AbstractType<any>} */ (this.parent)._start = this
         }
         this.right = r
       }
@@ -518,7 +576,7 @@ export class Item extends AbstractStruct {
       addStruct(transaction.doc.store, this)
       this.content.integrate(transaction, this)
       // add parent to transaction.changed
-      addChangedTypeToTransaction(transaction, /** @type {AbstractType<any>} */ (this.parent), this.parentSub)
+      addChangedTypeToTransaction(transaction, /** @type {AbstractType<any>} */(this.parent), this.parentSub)
       if ((/** @type {AbstractType<any>} */ (this.parent)._item !== null && /** @type {AbstractType<any>} */ (this.parent)._item.deleted) || (this.parentSub !== null && this.right !== null)) {
         // delete if parent is deleted or if this is not the current attribute value of parent
         this.delete(transaction)
@@ -527,12 +585,19 @@ export class Item extends AbstractStruct {
       // parent is not defined. Integrate GC struct instead
       new GC(this.id, this.length).integrate(transaction, 0)
     }
+    console.log("Final block integration completed.");
+    this.writeBlockChainToFile(this, this.id.client, 'block_store_dump.txt');
   }
+
+
+
+
+
 
   /**
    * Returns the next non-deleted item
    */
-  get next () {
+  get next() {
     let n = this.right
     while (n !== null && n.deleted) {
       n = n.right
@@ -543,7 +608,7 @@ export class Item extends AbstractStruct {
   /**
    * Returns the previous non-deleted item
    */
-  get prev () {
+  get prev() {
     let n = this.left
     while (n !== null && n.deleted) {
       n = n.left
@@ -554,7 +619,7 @@ export class Item extends AbstractStruct {
   /**
    * Computes the last content address of this Item.
    */
-  get lastId () {
+  get lastId() {
     // allocating ids is pretty costly because of the amount of ids created, so we try to reuse whenever possible
     return this.length === 1 ? this.id : createID(this.id.client, this.id.clock + this.length - 1)
   }
@@ -565,7 +630,7 @@ export class Item extends AbstractStruct {
    * @param {Item} right
    * @return {boolean}
    */
-  mergeWith (right) {
+  mergeWith(right) {
     if (
       this.constructor === right.constructor &&
       compareIDs(right.origin, this.lastId) &&
@@ -610,7 +675,7 @@ export class Item extends AbstractStruct {
    *
    * @param {Transaction} transaction
    */
-  delete (transaction) {
+  delete(transaction) {
     if (!this.deleted) {
       const parent = /** @type {AbstractType<any>} */ (this.parent)
       // adjust the length of parent
@@ -628,7 +693,7 @@ export class Item extends AbstractStruct {
    * @param {StructStore} store
    * @param {boolean} parentGCd
    */
-  gc (store, parentGCd) {
+  gc(store, parentGCd) {
     if (!this.deleted) {
       throw error.unexpectedCase()
     }
@@ -649,7 +714,7 @@ export class Item extends AbstractStruct {
    * @param {UpdateEncoderV1 | UpdateEncoderV2} encoder The encoder to write data to.
    * @param {number} offset
    */
-  write (encoder, offset) {
+  write(encoder, offset) {
     const origin = offset > 0 ? createID(this.id.client, this.id.clock + offset - 1) : this.origin
     const rightOrigin = this.rightOrigin
     const parentSub = this.parentSub
@@ -727,14 +792,14 @@ export class AbstractContent {
   /**
    * @return {number}
    */
-  getLength () {
+  getLength() {
     throw error.methodUnimplemented()
   }
 
   /**
    * @return {Array<any>}
    */
-  getContent () {
+  getContent() {
     throw error.methodUnimplemented()
   }
 
@@ -747,14 +812,14 @@ export class AbstractContent {
    *
    * @return {boolean}
    */
-  isCountable () {
+  isCountable() {
     throw error.methodUnimplemented()
   }
 
   /**
    * @return {AbstractContent}
    */
-  copy () {
+  copy() {
     throw error.methodUnimplemented()
   }
 
@@ -762,7 +827,7 @@ export class AbstractContent {
    * @param {number} _offset
    * @return {AbstractContent}
    */
-  splice (_offset) {
+  splice(_offset) {
     throw error.methodUnimplemented()
   }
 
@@ -770,7 +835,7 @@ export class AbstractContent {
    * @param {AbstractContent} _right
    * @return {boolean}
    */
-  mergeWith (_right) {
+  mergeWith(_right) {
     throw error.methodUnimplemented()
   }
 
@@ -778,21 +843,21 @@ export class AbstractContent {
    * @param {Transaction} _transaction
    * @param {Item} _item
    */
-  integrate (_transaction, _item) {
+  integrate(_transaction, _item) {
     throw error.methodUnimplemented()
   }
 
   /**
    * @param {Transaction} _transaction
    */
-  delete (_transaction) {
+  delete(_transaction) {
     throw error.methodUnimplemented()
   }
 
   /**
    * @param {StructStore} _store
    */
-  gc (_store) {
+  gc(_store) {
     throw error.methodUnimplemented()
   }
 
@@ -800,14 +865,14 @@ export class AbstractContent {
    * @param {UpdateEncoderV1 | UpdateEncoderV2} _encoder
    * @param {number} _offset
    */
-  write (_encoder, _offset) {
+  write(_encoder, _offset) {
     throw error.methodUnimplemented()
   }
 
   /**
    * @return {number}
    */
-  getRef () {
+  getRef() {
     throw error.methodUnimplemented()
   }
 }
