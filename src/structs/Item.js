@@ -359,6 +359,11 @@ export class Item extends AbstractStruct {
     this.info |= binary.BIT3
   }
 
+
+
+
+
+
   /**
    * Return the creator clientID of the missing op or define missing items and return null.
    *
@@ -410,6 +415,11 @@ export class Item extends AbstractStruct {
     }
     return null
   }
+
+
+
+
+
 
   /**
    * @param {Item|null} startBlock

@@ -293,6 +293,7 @@ const integrateStructs = (transaction, store, clientsStructRefs) => {
    */
   let stackHead = /** @type {any} */ (curStructsTarget).refs[/** @type {any} */ (curStructsTarget).i++]
   // caching the state because it is used very often
+  // it's a kv store of a client id to it's latest clock value
   const state = new Map()
 
   const addStackToRestSS = () => {
@@ -326,10 +327,11 @@ const integrateStructs = (transaction, store, clientsStructRefs) => {
       const localClock = map.setIfUndefined(state, stackHead.id.client, () => getState(store, stackHead.id.client))
       const offset = localClock - stackHead.id.clock
       if (offset < 0) {
-        // update from the same client is missing
+        // some update from the stackHead's client is missing
         stack.push(stackHead)
         updateMissingSv(stackHead.id.client, stackHead.id.clock - 1)
-        // hid a dead wall, add all items from stack to restSS
+        // hit a dead wall, add all items from stack to restSS
+        // TODO: figure this out
         addStackToRestSS()
       } else {
         // BRO THIS THING MUTATES NEIGHBORS BROTHER LOOK AT THIS
