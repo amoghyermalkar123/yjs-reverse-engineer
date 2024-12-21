@@ -366,6 +366,7 @@ export class Item extends AbstractStruct {
    * @param {StructStore} store
    * @return {null | number}
    */
+  // TODO: Figure this out
   getMissing(transaction, store) {
     if (this.origin && this.origin.client !== this.id.client && this.origin.clock >= getState(store, this.origin.client)) {
       return this.origin.client
@@ -413,9 +414,10 @@ export class Item extends AbstractStruct {
   /**
    * @param {Item|null} startBlock
    * @param {number} clientId
+   * @param {string} action
    */
   // Helper function to generate ASCII representation of the block store for each client
-  writeBlockChainToFile(startBlock, clientId, filename = "block_chain_dump.txt") {
+  writeBlockChainToFile(startBlock, clientId, msg = "none", action) {
     let asciiRepresentation = `Client ID: ${clientId}\n`;
     asciiRepresentation += `Block Chain:\n`;
 
@@ -428,14 +430,15 @@ export class Item extends AbstractStruct {
       const blockId = `${currentBlock.id.client}:${currentBlock.id.clock}`;
 
       // Append each block's information to the ASCII string
-      asciiRepresentation += `Block ID: ${blockId} | Left: ${leftId} | Right: ${rightId}\n`;
+      asciiRepresentation += `Block ID: ${blockId} | Content: ${currentBlock.content.getContent()} | Left: ${leftId} | Right: ${rightId} | Action: ${action} | Msg: ${msg}\n`;
 
       // Move to the next block (follow the right pointer)
       currentBlock = currentBlock.right;
     }
 
+    console.log(asciiRepresentation + "\n\n===========================\n\n")
     // Write the representation to the file (append mode)
-    fs.appendFileSync(filename, asciiRepresentation + "\n\n===========================\n\n", 'utf8');
+    // fs.appendFileSync(filename, asciiRepresentation + "\n\n===========================\n\n", 'utf8');
   }
 
   /**
@@ -458,6 +461,7 @@ export class Item extends AbstractStruct {
    * @param {number} offset
    */
   integrate(transaction, offset) {
+    this.writeBlockChainToFile(this, this.id.client, '', "INTEG BEGIN");
     if (offset > 0) {
       this.id.clock += offset
       this.left = getItemCleanEnd(transaction, transaction.doc.store, createID(this.id.client, this.id.clock - 1))
@@ -465,19 +469,19 @@ export class Item extends AbstractStruct {
       this.content = this.content.splice(offset)
       this.length -= offset
     }
-    console.log("Integrating block with ID:", this.id);
-    this.writeBlockChainToFile(this, this.id.client, 'block_store_dump.txt'); // Dump block store state
+    this.writeBlockChainToFile(this, this.id.client, '', "INTEG OFFSET CORRECTED");
 
 
     if (this.parent) {
       // detect conflict
       if ((!this.left && (!this.right || this.right.left !== null)) || (this.left && this.left.right !== this.right)) {
-        console.log("conflict found", "cnd 1", !this.left && (!this.right || this.right.left !== null), "cnd 2", this.left && this.left.right !== this.right)
+        console.log("====CONFLICT DETECTED====")
         /**
          * @type {Item|null}
          */
         let left = this.left
 
+        this.writeBlockChainToFile(left, -1, 'LEFT PTR', "CONFLICT RESOLUTION");
         /**
          * @type {Item|null}
          */
@@ -494,12 +498,7 @@ export class Item extends AbstractStruct {
           o = /** @type {AbstractType<any>} */ (this.parent)._start
         }
 
-
-
-
-
-        // TODO: use something like DeleteSet here (a tree implementation would be best)
-        // @todo use global set definitions
+        this.writeBlockChainToFile(o, -1, 'CONFLICTING ITEM', "CONFLICT RESOLUTION");
         /**
          * @type {Set<Item>}
          */
@@ -514,14 +513,18 @@ export class Item extends AbstractStruct {
         while (o !== null && o !== this.right) {
           itemsBeforeOrigin.add(o)
           conflictingItems.add(o)
+          itemsBeforeOrigin.forEach((item) => console.log("IBO", item.content.getContent()))
+          conflictingItems.forEach((item) => console.log("CI", item.content.getContent()))
           if (compareIDs(this.origin, o.origin)) {
             // case 1
             if (o.id.client < this.id.client) {
               left = o
               conflictingItems.clear()
+              this.writeBlockChainToFile(left, -1, 'CASE 1 MATCH', "CONFLICT RESOLUTION");
             } else if (compareIDs(this.rightOrigin, o.rightOrigin)) {
               // this and o are conflicting and point to the same integration points. The id decides which item comes first.
               // Since this is to the left of o, we can break here
+              this.writeBlockChainToFile(this, -1, 'SAME INTEG POINT', "CONFLICT RESOLUTION");
               break
             } // else, o might be integrated before an item that this conflicts with. If so, we will find it in the next iterations
           } else if (o.origin !== null && itemsBeforeOrigin.has(getItem(transaction.doc.store, o.origin))) { // use getItem instead of getItemCleanEnd because we don't want / need to split items.
@@ -529,19 +532,22 @@ export class Item extends AbstractStruct {
             if (!conflictingItems.has(getItem(transaction.doc.store, o.origin))) {
               left = o
               conflictingItems.clear()
+              this.writeBlockChainToFile(left, -1, 'CASE 2 MATCH', "CONFLICT RESOLUTION");
             }
           } else {
+            // we might have found our left, so break
             break
           }
           o = o.right
+          this.writeBlockChainToFile(left, -1, 'CASE 2 MATCH', "CONFLICT RESOLUTION");
         }
         this.left = left
       }
 
 
 
-      this.writeBlockChainToFile(this, this.id.client, 'block_store_dump.txt'); // Dump block store state after conflict resolution
-      // reconnect left/right + update parent map/start if necessary
+      this.writeBlockChainToFile(this, this.id.client, '', "POST CONFLICT RES"); // Dump block store state after conflict resolution
+      // reconnect left + update parent map/start if necessary
       if (this.left !== null) {
         const right = this.left.right
         this.right = right
@@ -559,6 +565,8 @@ export class Item extends AbstractStruct {
         }
         this.right = r
       }
+
+      // reconnect right + update parent map/start if necessary
       if (this.right !== null) {
         this.right.left = this
       } else if (this.parentSub !== null) {
@@ -569,12 +577,19 @@ export class Item extends AbstractStruct {
           this.left.delete(transaction)
         }
       }
-      // adjust length of parent
+
+      // adjust length of parent by the content length from the block
       if (this.parentSub === null && this.countable && !this.deleted) {
         /** @type {AbstractType<any>} */ (this.parent)._length += this.length
       }
+
+      // add this block to the block store
       addStruct(transaction.doc.store, this)
+      // -------phase 0 y-zig ends here--------------------
+
+      // TODO: figure this out
       this.content.integrate(transaction, this)
+
       // add parent to transaction.changed
       addChangedTypeToTransaction(transaction, /** @type {AbstractType<any>} */(this.parent), this.parentSub)
       if ((/** @type {AbstractType<any>} */ (this.parent)._item !== null && /** @type {AbstractType<any>} */ (this.parent)._item.deleted) || (this.parentSub !== null && this.right !== null)) {
@@ -585,8 +600,9 @@ export class Item extends AbstractStruct {
       // parent is not defined. Integrate GC struct instead
       new GC(this.id, this.length).integrate(transaction, 0)
     }
-    console.log("Final block integration completed.");
-    this.writeBlockChainToFile(this, this.id.client, 'block_store_dump.txt');
+
+
+    this.writeBlockChainToFile(this, this.id.client, '', "INTEG END");
   }
 
 

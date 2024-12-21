@@ -48,7 +48,7 @@ export class ItemTextListPosition {
    * @param {number} index
    * @param {Map<string,any>} currentAttributes
    */
-  constructor (left, right, index, currentAttributes) {
+  constructor(left, right, index, currentAttributes) {
     this.left = left
     this.right = right
     this.index = index
@@ -58,14 +58,14 @@ export class ItemTextListPosition {
   /**
    * Only call this if you know that this.right is defined
    */
-  forward () {
+  forward() {
     if (this.right === null) {
       error.unexpectedCase()
     }
     switch (this.right.content.constructor) {
       case ContentFormat:
         if (!this.right.deleted) {
-          updateCurrentAttributes(this.currentAttributes, /** @type {ContentFormat} */ (this.right.content))
+          updateCurrentAttributes(this.currentAttributes, /** @type {ContentFormat} */(this.right.content))
         }
         break
       default:
@@ -88,12 +88,17 @@ export class ItemTextListPosition {
  * @private
  * @function
  */
+// TODO: figure this out, this is executed once we get the "best marker"
+// i think the general idea here thats followed is to split a block if required
+// and add the new content there proceeding with adjusting the left and right neighbors
+// what i dont understand is the factors basis which a block is split, i think position is
+// what user provides, but relative to the block, how do you split it? since pos is global
 const findNextPosition = (transaction, pos, count) => {
   while (pos.right !== null && count > 0) {
     switch (pos.right.content.constructor) {
       case ContentFormat:
         if (!pos.right.deleted) {
-          updateCurrentAttributes(pos.currentAttributes, /** @type {ContentFormat} */ (pos.right.content))
+          updateCurrentAttributes(pos.currentAttributes, /** @type {ContentFormat} */(pos.right.content))
         }
         break
       default:
@@ -153,12 +158,12 @@ const insertNegatedAttributes = (transaction, parent, currPos, negatedAttributes
     currPos.right !== null && (
       currPos.right.deleted === true || (
         currPos.right.content.constructor === ContentFormat &&
-        equalAttrs(negatedAttributes.get(/** @type {ContentFormat} */ (currPos.right.content).key), /** @type {ContentFormat} */ (currPos.right.content).value)
+        equalAttrs(negatedAttributes.get(/** @type {ContentFormat} */(currPos.right.content).key), /** @type {ContentFormat} */(currPos.right.content).value)
       )
     )
   ) {
     if (!currPos.right.deleted) {
-      negatedAttributes.delete(/** @type {ContentFormat} */ (currPos.right.content).key)
+      negatedAttributes.delete(/** @type {ContentFormat} */(currPos.right.content).key)
     }
     currPos.forward()
   }
@@ -202,7 +207,7 @@ const minimizeAttributeChanges = (currPos, attributes) => {
   while (true) {
     if (currPos.right === null) {
       break
-    } else if (currPos.right.deleted || (currPos.right.content.constructor === ContentFormat && equalAttrs(attributes[(/** @type {ContentFormat} */ (currPos.right.content)).key] ?? null, /** @type {ContentFormat} */ (currPos.right.content).value))) {
+    } else if (currPos.right.deleted || (currPos.right.content.constructor === ContentFormat && equalAttrs(attributes[(/** @type {ContentFormat} */ (currPos.right.content)).key] ?? null, /** @type {ContentFormat} */(currPos.right.content).value))) {
       //
     } else {
       break
@@ -262,7 +267,7 @@ const insertText = (transaction, parent, currPos, text, attributes) => {
   minimizeAttributeChanges(currPos, attributes)
   const negatedAttributes = insertAttributes(transaction, parent, currPos, attributes)
   // insert content
-  const content = text.constructor === String ? new ContentString(/** @type {string} */ (text)) : (text instanceof AbstractType ? new ContentType(text) : new ContentEmbed(text))
+  const content = text.constructor === String ? new ContentString(/** @type {string} */(text)) : (text instanceof AbstractType ? new ContentType(text) : new ContentEmbed(text))
   let { left, right, index } = currPos
   if (parent._searchMarker) {
     updateMarkerChanges(parent._searchMarker, currPos.index, content.getLength())
@@ -404,7 +409,7 @@ const cleanupFormattingGap = (transaction, start, curr, startAttributes, currAtt
             }
           }
           if (!reachedCurr && !start.deleted) {
-            updateCurrentAttributes(currAttributes, /** @type {ContentFormat} */ (content))
+            updateCurrentAttributes(currAttributes, /** @type {ContentFormat} */(content))
           }
           break
         }
@@ -453,7 +458,7 @@ const cleanupContextlessFormattingGap = (transaction, item) => {
  */
 export const cleanupYTextFormatting = type => {
   let res = 0
-  transact(/** @type {Doc} */ (type.doc), transaction => {
+  transact(/** @type {Doc} */(type.doc), transaction => {
     let start = /** @type {Item} */ (type._start)
     let end = type._start
     let startAttributes = map.create()
@@ -462,7 +467,7 @@ export const cleanupYTextFormatting = type => {
       if (end.deleted === false) {
         switch (end.content.constructor) {
           case ContentFormat:
-            updateCurrentAttributes(currentAttributes, /** @type {ContentFormat} */ (end.content))
+            updateCurrentAttributes(currentAttributes, /** @type {ContentFormat} */(end.content))
             break
           default:
             res += cleanupFormattingGap(transaction, start, end, startAttributes, currentAttributes)
@@ -495,18 +500,18 @@ export const cleanupYTextAfterTransaction = transaction => {
     if (afterClock === clock) {
       continue
     }
-    iterateStructs(transaction, /** @type {Array<Item|GC>} */ (doc.store.clients.get(client)), clock, afterClock, item => {
+    iterateStructs(transaction, /** @type {Array<Item|GC>} */(doc.store.clients.get(client)), clock, afterClock, item => {
       if (
         !item.deleted && /** @type {Item} */ (item).content.constructor === ContentFormat && item.constructor !== GC
       ) {
-        needFullCleanup.add(/** @type {any} */ (item).parent)
+        needFullCleanup.add(/** @type {any} */(item).parent)
       }
     })
   }
   // cleanup in a new transaction
   transact(doc, (t) => {
     iterateDeletedStructs(transaction, transaction.deleteSet, item => {
-      if (item instanceof GC || !(/** @type {YText} */ (item.parent)._hasFormatting) || needFullCleanup.has(/** @type {YText} */ (item.parent))) {
+      if (item instanceof GC || !(/** @type {YText} */ (item.parent)._hasFormatting) || needFullCleanup.has(/** @type {YText} */(item.parent))) {
         return
       }
       const parent = /** @type {YText} */ (item.parent)
@@ -603,7 +608,7 @@ export class YTextEvent extends YEvent {
    * @param {Transaction} transaction
    * @param {Set<any>} subs The keys that changed
    */
-  constructor (ytext, transaction, subs) {
+  constructor(ytext, transaction, subs) {
     super(ytext, transaction)
     /**
      * Whether the children changed.
@@ -628,7 +633,7 @@ export class YTextEvent extends YEvent {
   /**
    * @type {{added:Set<Item>,deleted:Set<Item>,keys:Map<string,{action:'add'|'update'|'delete',oldValue:any}>,delta:Array<{insert?:Array<any>|string, delete?:number, retain?:number}>}}
    */
-  get changes () {
+  get changes() {
     if (this._changes === null) {
       /**
        * @type {{added:Set<Item>,deleted:Set<Item>,keys:Map<string,{action:'add'|'update'|'delete',oldValue:any}>,delta:Array<{insert?:Array<any>|string|AbstractType<any>|object, delete?:number, retain?:number}>}}
@@ -652,7 +657,7 @@ export class YTextEvent extends YEvent {
    *
    * @public
    */
-  get delta () {
+  get delta() {
     if (this._delta === null) {
       const y = /** @type {Doc} */ (this.target.doc)
       /**
@@ -815,7 +820,7 @@ export class YTextEvent extends YEvent {
                 if (action === 'insert') {
                   addOp()
                 }
-                updateCurrentAttributes(currentAttributes, /** @type {ContentFormat} */ (item.content))
+                updateCurrentAttributes(currentAttributes, /** @type {ContentFormat} */(item.content))
               }
               break
             }
@@ -852,7 +857,7 @@ export class YText extends AbstractType {
   /**
    * @param {String} [string] The initial value of the YText.
    */
-  constructor (string) {
+  constructor(string) {
     super()
     /**
      * Array of pending operations on this type
@@ -875,7 +880,7 @@ export class YText extends AbstractType {
    *
    * @type {number}
    */
-  get length () {
+  get length() {
     this.doc ?? warnPrematureAccess()
     return this._length
   }
@@ -884,7 +889,7 @@ export class YText extends AbstractType {
    * @param {Doc} y
    * @param {Item} item
    */
-  _integrate (y, item) {
+  _integrate(y, item) {
     super._integrate(y, item)
     try {
       /** @type {Array<function>} */ (this._pending).forEach(f => f())
@@ -894,7 +899,7 @@ export class YText extends AbstractType {
     this._pending = null
   }
 
-  _copy () {
+  _copy() {
     return new YText()
   }
 
@@ -905,7 +910,7 @@ export class YText extends AbstractType {
    *
    * @return {YText}
    */
-  clone () {
+  clone() {
     const text = new YText()
     text.applyDelta(this.toDelta())
     return text
@@ -917,7 +922,7 @@ export class YText extends AbstractType {
    * @param {Transaction} transaction
    * @param {Set<null|string>} parentSubs Keys changed on this type. `null` if list was modified.
    */
-  _callObserver (transaction, parentSubs) {
+  _callObserver(transaction, parentSubs) {
     super._callObserver(transaction, parentSubs)
     const event = new YTextEvent(this, transaction, parentSubs)
     callTypeObservers(this, transaction, event)
@@ -932,7 +937,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  toString () {
+  toString() {
     this.doc ?? warnPrematureAccess()
     let str = ''
     /**
@@ -954,7 +959,7 @@ export class YText extends AbstractType {
    * @return {string}
    * @public
    */
-  toJSON () {
+  toJSON() {
     return this.toString()
   }
 
@@ -968,7 +973,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  applyDelta (delta, { sanitize = true } = {}) {
+  applyDelta(delta, { sanitize = true } = {}) {
     if (this.doc !== null) {
       transact(this.doc, transaction => {
         const currPos = new ItemTextListPosition(null, this._start, 0, new Map())
@@ -1006,7 +1011,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  toDelta (snapshot, prevSnapshot, computeYChange) {
+  toDelta(snapshot, prevSnapshot, computeYChange) {
     this.doc ?? warnPrematureAccess()
     /**
      * @type{Array<any>}
@@ -1016,7 +1021,7 @@ export class YText extends AbstractType {
     const doc = /** @type {Doc} */ (this.doc)
     let str = ''
     let n = this._start
-    function packStr () {
+    function packStr() {
       if (str.length > 0) {
         // pack str with attributes to ops
         /**
@@ -1084,7 +1089,7 @@ export class YText extends AbstractType {
             case ContentFormat:
               if (isVisible(n, snapshot)) {
                 packStr()
-                updateCurrentAttributes(currentAttributes, /** @type {ContentFormat} */ (n.content))
+                updateCurrentAttributes(currentAttributes, /** @type {ContentFormat} */(n.content))
               }
               break
           }
@@ -1121,7 +1126,7 @@ export class YText extends AbstractType {
    *                                    Text.
    * @public
    */
-  insert (index, text, attributes) {
+  insert(index, text, attributes) {
     if (text.length <= 0) {
       return
     }
@@ -1151,7 +1156,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  insertEmbed (index, embed, attributes) {
+  insertEmbed(index, embed, attributes) {
     const y = this.doc
     if (y !== null) {
       transact(y, transaction => {
@@ -1171,7 +1176,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  delete (index, length) {
+  delete(index, length) {
     if (length === 0) {
       return
     }
@@ -1195,7 +1200,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  format (index, length, attributes) {
+  format(index, length, attributes) {
     if (length === 0) {
       return
     }
@@ -1222,7 +1227,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  removeAttribute (attributeName) {
+  removeAttribute(attributeName) {
     if (this.doc !== null) {
       transact(this.doc, transaction => {
         typeMapDelete(transaction, this, attributeName)
@@ -1242,7 +1247,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  setAttribute (attributeName, attributeValue) {
+  setAttribute(attributeName, attributeValue) {
     if (this.doc !== null) {
       transact(this.doc, transaction => {
         typeMapSet(transaction, this, attributeName, attributeValue)
@@ -1263,7 +1268,7 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  getAttribute (attributeName) {
+  getAttribute(attributeName) {
     return /** @type {any} */ (typeMapGet(this, attributeName))
   }
 
@@ -1276,14 +1281,14 @@ export class YText extends AbstractType {
    *
    * @public
    */
-  getAttributes () {
+  getAttributes() {
     return typeMapGetAll(this)
   }
 
   /**
    * @param {UpdateEncoderV1 | UpdateEncoderV2} encoder
    */
-  _write (encoder) {
+  _write(encoder) {
     encoder.writeTypeRef(YTextRefID)
   }
 }

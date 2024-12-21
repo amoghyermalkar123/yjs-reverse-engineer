@@ -40,7 +40,7 @@ export class ArraySearchMarker {
    * @param {Item} p
    * @param {number} index
    */
-  constructor (p, index) {
+  constructor(p, index) {
     p.marker = true
     this.p = p
     this.index = index
@@ -138,30 +138,6 @@ export const findMarker = (yarray, index) => {
     }
   }
 
-  // @todo remove!
-  // assure position
-  // {
-  //   let start = yarray._start
-  //   let pos = 0
-  //   while (start !== p) {
-  //     if (!start.deleted && start.countable) {
-  //       pos += start.length
-  //     }
-  //     start = /** @type {Item} */ (start.right)
-  //   }
-  //   if (pos !== pindex) {
-  //     debugger
-  //     throw new Error('Gotcha position fail!')
-  //   }
-  // }
-  // if (marker) {
-  //   if (window.lengthes == null) {
-  //     window.lengthes = []
-  //     window.getLengthes = () => window.lengthes.sort((a, b) => a - b)
-  //   }
-  //   window.lengthes.push(marker.index - pindex)
-  //   console.log('distance', marker.index - pindex, 'len', p && p.parent.length)
-  // }
   if (marker !== null && math.abs(marker.index - pindex) < /** @type {YText|YArray<any>} */ (p.parent).length / maxSearchMarker) {
     // adjust existing marker
     overwriteMarker(marker, p, pindex)
@@ -181,6 +157,7 @@ export const findMarker = (yarray, index) => {
  * @param {number} index
  * @param {number} len If insertion, len is positive. If deletion, len is negative.
  */
+//TODO: figure this out
 export const updateMarkerChanges = (searchMarker, index, len) => {
   for (let i = searchMarker.length - 1; i >= 0; i--) {
     const m = searchMarker[i]
@@ -259,7 +236,7 @@ export const callTypeObservers = (type, transaction, event) => {
  * Abstract Yjs Type class
  */
 export class AbstractType {
-  constructor () {
+  constructor() {
     /**
      * @type {Item|null}
      */
@@ -296,7 +273,7 @@ export class AbstractType {
   /**
    * @return {AbstractType<any>|null}
    */
-  get parent () {
+  get parent() {
     return this._item ? /** @type {AbstractType<any>} */ (this._item.parent) : null
   }
 
@@ -310,7 +287,7 @@ export class AbstractType {
    * @param {Doc} y The Yjs instance
    * @param {Item|null} item
    */
-  _integrate (y, item) {
+  _integrate(y, item) {
     this.doc = y
     this._item = item
   }
@@ -318,7 +295,7 @@ export class AbstractType {
   /**
    * @return {AbstractType<EventType>}
    */
-  _copy () {
+  _copy() {
     throw error.methodUnimplemented()
   }
 
@@ -329,19 +306,19 @@ export class AbstractType {
    *
    * @return {AbstractType<EventType>}
    */
-  clone () {
+  clone() {
     throw error.methodUnimplemented()
   }
 
   /**
    * @param {UpdateEncoderV1 | UpdateEncoderV2} _encoder
    */
-  _write (_encoder) { }
+  _write(_encoder) { }
 
   /**
    * The first non-deleted item
    */
-  get _first () {
+  get _first() {
     let n = this._start
     while (n !== null && n.deleted) {
       n = n.right
@@ -356,7 +333,7 @@ export class AbstractType {
    * @param {Transaction} transaction
    * @param {Set<null|string>} _parentSubs Keys changed on this type. `null` if list was modified.
    */
-  _callObserver (transaction, _parentSubs) {
+  _callObserver(transaction, _parentSubs) {
     if (!transaction.local && this._searchMarker) {
       this._searchMarker.length = 0
     }
@@ -367,7 +344,7 @@ export class AbstractType {
    *
    * @param {function(EventType, Transaction):void} f Observer function
    */
-  observe (f) {
+  observe(f) {
     addEventHandlerListener(this._eH, f)
   }
 
@@ -376,7 +353,7 @@ export class AbstractType {
    *
    * @param {function(Array<YEvent<any>>,Transaction):void} f Observer function
    */
-  observeDeep (f) {
+  observeDeep(f) {
     addEventHandlerListener(this._dEH, f)
   }
 
@@ -385,7 +362,7 @@ export class AbstractType {
    *
    * @param {function(EventType,Transaction):void} f Observer function
    */
-  unobserve (f) {
+  unobserve(f) {
     removeEventHandlerListener(this._eH, f)
   }
 
@@ -394,7 +371,7 @@ export class AbstractType {
    *
    * @param {function(Array<YEvent<any>>,Transaction):void} f Observer function
    */
-  unobserveDeep (f) {
+  unobserveDeep(f) {
     removeEventHandlerListener(this._dEH, f)
   }
 
@@ -402,7 +379,7 @@ export class AbstractType {
    * @abstract
    * @return {any}
    */
-  toJSON () {}
+  toJSON() { }
 }
 
 /**
@@ -548,7 +525,7 @@ export const typeListCreateIterator = type => {
   let currentContent = null
   let currentContentIndex = 0
   return {
-    [Symbol.iterator] () {
+    [Symbol.iterator]() {
       return this
     },
     next: () => {
@@ -676,11 +653,11 @@ export const typeListInsertGenericsAfter = (transaction, parent, referenceItem, 
           switch (c.constructor) {
             case Uint8Array:
             case ArrayBuffer:
-              left = new Item(createID(ownClientId, getState(store, ownClientId)), left, left && left.lastId, right, right && right.id, parent, null, new ContentBinary(new Uint8Array(/** @type {Uint8Array} */ (c))))
+              left = new Item(createID(ownClientId, getState(store, ownClientId)), left, left && left.lastId, right, right && right.id, parent, null, new ContentBinary(new Uint8Array(/** @type {Uint8Array} */(c))))
               left.integrate(transaction, 0)
               break
             case Doc:
-              left = new Item(createID(ownClientId, getState(store, ownClientId)), left, left && left.lastId, right, right && right.id, parent, null, new ContentDoc(/** @type {Doc} */ (c)))
+              left = new Item(createID(ownClientId, getState(store, ownClientId)), left, left && left.lastId, right, right && right.id, parent, null, new ContentDoc(/** @type {Doc} */(c)))
               left.integrate(transaction, 0)
               break
             default:
@@ -860,10 +837,10 @@ export const typeMapSet = (transaction, parent, key, value) => {
         content = new ContentAny([value])
         break
       case Uint8Array:
-        content = new ContentBinary(/** @type {Uint8Array} */ (value))
+        content = new ContentBinary(/** @type {Uint8Array} */(value))
         break
       case Doc:
-        content = new ContentDoc(/** @type {Doc} */ (value))
+        content = new ContentDoc(/** @type {Doc} */(value))
         break
       default:
         if (value instanceof AbstractType) {

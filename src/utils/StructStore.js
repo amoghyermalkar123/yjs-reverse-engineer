@@ -8,7 +8,7 @@ import * as math from 'lib0/math'
 import * as error from 'lib0/error'
 
 export class StructStore {
-  constructor () {
+  constructor() {
     /**
      * @type {Map<number,Array<GC|Item>>}
      */

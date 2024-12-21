@@ -316,10 +316,11 @@ const integrateStructs = (transaction, store, clientsStructRefs) => {
     stack.length = 0
   }
 
-  console.log("stach head decided:", stackHead)
-  console.log("-----------------")
+  // TODO: how is delta figured out i.e. which block to integrate and which not
+
+
   // iterate over all struct readers until we are done
-  // client-level integration loop
+  // client-level integration logic start
   while (true) {
     if (stackHead.constructor !== Skip) {
       const localClock = map.setIfUndefined(state, stackHead.id.client, () => getState(store, stackHead.id.client))
@@ -331,9 +332,9 @@ const integrateStructs = (transaction, store, clientsStructRefs) => {
         // hid a dead wall, add all items from stack to restSS
         addStackToRestSS()
       } else {
+        // BRO THIS THING MUTATES NEIGHBORS BROTHER LOOK AT THIS
         const missing = stackHead.getMissing(transaction, store)
         if (missing !== null) {
-          console.log("missing: ", missing)
           stack.push(stackHead)
           // get the struct reader that has the missing struct
           /**
@@ -351,7 +352,6 @@ const integrateStructs = (transaction, store, clientsStructRefs) => {
         } else if (offset === 0 || offset < stackHead.length) {
           // all fine, apply the stackhead
           // block-level integration
-          console.log("entering block-level integration because", "offset", offset, "stackhead", (stackHead))
           stackHead.integrate(transaction, offset)
           state.set(stackHead.id.client, stackHead.id.clock + stackHead.length)
         }
@@ -400,10 +400,7 @@ export const writeStructsFromTransaction = (encoder, transaction) => writeClient
  * @function
  */
 const printMyDecodedClientBlockList = (myMap) => {
-  console.log("decoded client list")
   myMap.forEach((value, key) => {
-    console.log(`Map Entry Key: ${key}`);
-
     value.refs.forEach((ref, index) => {
       if (ref instanceof Item) {
         console.log(`Item Index ${index}: id=${ref.id.client}:${ref.id.clock}, origin=${ref.origin}, left=${ref.left}, right=${ref.right}, rightOrigin=${ref.rightOrigin}, content=${ref.content.getContent()}`);
@@ -435,10 +432,11 @@ export const readUpdateV2 = (decoder, ydoc, transactionOrigin, structDecoder = n
 
     // Here we de-serialize the binary update we receive from a remote peer
     const ss = readClientsStructRefs(structDecoder, doc)
+    console.log("DECODING FINISHED")
     console.log(printMyDecodedClientBlockList(ss))
 
     // Integrate Per-Client block list
-    console.log("entering client level integration ...")
+    // console.log("entering client level integration ...")
     const restStructs = integrateStructs(transaction, store, ss)
 
     const pending = store.pendingStructs

@@ -1,114 +1,1997 @@
-
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:0 | Left: null | Right: null
+Block ID: 1843871166:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:0 | Left: null | Right: null
+Block ID: 1843871166:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:0 | Left: null | Right: null
+Block ID: 1843871166:0 | Content: A | Left: null | Right: null | Action: INTEG END
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:0 | Left: null | Right: null
+Block ID: 1843871166:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:0 | Left: null | Right: null
+Block ID: 1843871166:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:0 | Left: null | Right: null
+Block ID: 1843871166:1 | Content: B | Left: A | Right: null | Action: INTEG END
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:12 | Left: H,e,l,l,o,  | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: H,e,l,l,o,  | Right: null
+Block ID: 1843871166:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:12 | Left: H,e,l,l,o,  | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: H,e,l,l,o,  | Right: null
+Block ID: 1843871166:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:12 | Left: H,e,l,l,o,  | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: A,m,o,g,h | Right: null
+Block ID: 1843871166:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
 
 
 ===========================
 
-Client ID: 1784186931
+Client ID: 1843871166
 Block Chain:
-Block ID: 1784186931:0 | Left: H,e,l,l,o,  | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: H,e,l,l,o,  | Right: null
+Block ID: 1843871166:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
 
 
 ===========================
 
-Client ID: 1784186931
+Client ID: 1843871166
 Block Chain:
-Block ID: 1784186931:0 | Left: H,e,l,l,o,  | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: H,e,l,l,o,  | Right: null
+Block ID: 1843871166:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
 
 
 ===========================
 
-Client ID: 1784186931
+Client ID: 1843871166
 Block Chain:
-Block ID: 1784186931:0 | Left: H,e,l,l,o,  | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: I,s,h,a,n | Right: null
+Block ID: 1843871166:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:12 | Left: H,e,l,l,o,  | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: I,s,h,a,n | Right: null
+Block ID: 1843871166:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:12 | Left: I,s,h,a,n | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: I,s,h,a,n | Right: null
+Block ID: 1843871166:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
 
 
 ===========================
 
-Client ID: 3044200359
+Client ID: 1843871166
 Block Chain:
-Block ID: 3044200359:12 | Left: I,s,h,a,n | Right: W,o,r,l,d,!
-Block ID: 3044200359:6 | Left: A,m,o,g,h | Right: null
+Block ID: 1843871166:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1843871166:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1843871166:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 1843871166:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1843871166:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1843871166:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 1843871166:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1843871166:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1843871166:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 1843871166:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1843871166:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1843871166:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1843871166
+Block Chain:
+Block ID: 1843871166:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 1843871166:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1110494118:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1110494118:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 1110494118:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1110494118:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1110494118:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 1110494118:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1110494118:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1110494118:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 1110494118:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1110494118:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1110494118:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1110494118
+Block Chain:
+Block ID: 1110494118:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 1110494118:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 3230826947:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 3230826947:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 3230826947:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 3230826947:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 3230826947:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 3230826947:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 3230826947:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 3230826947:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 3230826947:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 3230826947:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 3230826947:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 3230826947
+Block Chain:
+Block ID: 3230826947:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 3230826947:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 750086615:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 750086615:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 750086615:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 750086615:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 750086615:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 750086615:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 750086615:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 750086615:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 750086615:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 750086615:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 750086615:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 750086615
+Block Chain:
+Block ID: 750086615:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 750086615:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 708671695:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 708671695:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 708671695:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 708671695:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 708671695:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 708671695:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 708671695:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 708671695:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 708671695:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 708671695:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 708671695:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 708671695
+Block Chain:
+Block ID: 708671695:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 708671695:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 986194652:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 986194652:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 986194652:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 986194652:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 986194652:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 986194652:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 986194652:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 986194652:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 986194652:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 986194652:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 986194652:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 986194652
+Block Chain:
+Block ID: 986194652:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 986194652:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 780402706:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 780402706:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 780402706:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 780402706:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 780402706:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 780402706:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 780402706:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 780402706:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 780402706:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 780402706:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 780402706:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 780402706
+Block Chain:
+Block ID: 780402706:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 780402706:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 596558456:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 596558456:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 596558456:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 596558456:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 596558456:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 596558456:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 596558456:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 596558456:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 596558456:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 596558456:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 596558456:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 596558456
+Block Chain:
+Block ID: 596558456:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 596558456:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:0 | Content: A | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:0 | Content: A | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:0 | Content: A | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:1 | Content: B | Left: A | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:1 | Content: B | Left: A | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:1 | Content: B | Left: A | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:2 | Content: C | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:2 | Content: C | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:2 | Content: C | Left: A,B | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:3 | Content: D | Left: A,B,C | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:3 | Content: D | Left: A,B,C | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:4 | Content: E | Left: A,B,C,D | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:4 | Content: E | Left: A,B,C,D | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:0 | Content: A,B,C,D,E | Left: null | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1641321297:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:5 | Content: X | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1641321297:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:5 | Content: X | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 1641321297:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1641321297:2 | Content: C,D,E | Left: X | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:6 | Content: Y | Left: X | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1641321297:2 | Content: C,D,E | Left: X | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:6 | Content: Y | Left: X | Right: C,D,E | Action: INTEG END
+Block ID: 1641321297:2 | Content: C,D,E | Left: Y | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1641321297:2 | Content: C,D,E | Left: X,Y | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1641321297:2 | Content: C,D,E | Left: X,Y | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:7 | Content: Z | Left: X,Y | Right: C,D,E | Action: INTEG END
+Block ID: 1641321297:2 | Content: C,D,E | Left: Z | Right: null | Action: INTEG END
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG BEGIN
+Block ID: 1641321297:2 | Content: C,D,E | Left: A,B | Right: null | Action: INTEG BEGIN
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: POST CONFLICT RES
+Block ID: 1641321297:2 | Content: C,D,E | Left: A,B | Right: null | Action: POST CONFLICT RES
+
+
+===========================
+
+Client ID: 1641321297
+Block Chain:
+Block ID: 1641321297:5 | Content: X,Y,Z | Left: A,B | Right: C,D,E | Action: INTEG END
+Block ID: 1641321297:2 | Content: C,D,E | Left: X,Y,Z | Right: null | Action: INTEG END
 
 
 ===========================
